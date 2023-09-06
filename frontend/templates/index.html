@@ -20,38 +20,17 @@
 </head>
 
 <body>
+    <header>
+        <h1>Recipe Keeper</h1>
+        <p Class="head">COOKING LOVER</p>
+    </header>
+    <form class="d-flex mt-3 m-2" role="search" method="post" action="/recipes">
+        <label for="search_query"></label>
+        <input class="form-control me-2" type="text" name="search_query" id="search_query" placeholder="Search for a recipe">
+        <button class="searchButton" type="submit">Search</button>
+    </form>
+    <button type="submit" class="mt-2 ms-3 addRecipeButton"><a href="add_recipe.html">Add Recipe</a></button>
 
-    <h1>Recipe Keeper</h1>
-    <p Class="header">COOKING LOVER</p>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4 addRecipe text-center">
-                <h2>Add Recipe</h2>
-                <form id="recipeForm">
-                    <label for="recipeName" class="recipeName">Recipe Name</label><br>
-                    <input type="text" id="recipeName" name="recipeName" required><br>
-
-                    <label for="ingredients" class="ingredients">Ingredient</label><br>
-                    <textarea name="ingredients" id="ingredients" width=100
-                        placeholder="List ingredients separated by commas" required></textarea><br>
-
-                    <label for="method" class="method">Steps for Preparation</label><br>
-                    <textarea name="method" id="method" placeholder="Steps for Preparation" required></textarea><br>
-
-                    <label for="recipeImage" class="recipeImage">Recipe Image URL:</label><br>
-                    <input type="url" id="recipeImage" name="recipeImage"
-                        placeholder="http://example.com/my-dish.jpg"><br>
-
-                    <button type="submit" class="mt-2 addRecipeButton">Add Recipe</button>
-                </form>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-6 recipeOutput text-center">
-                <div id="recipesList"></div>
-                <script src="../static/recipes.js"></script>
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>

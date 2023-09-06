@@ -1,5 +1,5 @@
 body {
-    background-image: url(../static/cooking-background.webp);
+    background-image: url(../static/background-img.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -10,7 +10,7 @@ h1 {
     font-family: 'Sedgwick Ave Display', cursive;
     font-size: 60px;
     margin-top: 20px;
-    color: rgb(249, 249, 249);
+    color: #1BD751;
 }
 
 h2 {
@@ -20,27 +20,34 @@ h2 {
     color: rgb(118, 18, 138);
 }
 
-.header {
+.head {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
-    color: rgb(248, 247, 249);
+    color: #1BD751;
     font-size: 25px;
     margin-top: 20px;
 }
 
 p,
-ol {
+ol, .backToHomePage {
     font-family: 'Nunito Sans', sans-serif;
     text-align: left;
-    color: rgb(248, 247, 249);
+    color: rgb(118, 18, 138);
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(245, 233, 233);
+}
 small {
     font-family: 'Sedgwick Ave Display', cursive;
     text-align: left;
     color: rgb(248, 247, 249);
     font-size: 35px;
+}
+.form-control {
+    width: 300px;
 }
 
 .recipeName,
@@ -50,7 +57,7 @@ small {
     font-family: 'EB Garamond', serif;
     font-size: 20px;
     font-weight: 600;
-
+    color: rgb(118, 18, 138);
 }
 
 .addRecipe {
@@ -63,19 +70,19 @@ small {
     padding: 10px 8px;
     margin-left: 30px;
 }
-
+.searchButton {
+    width: 80px;
+}
 .addRecipeButton {
     width: 200px;
-    background-color: rgb(140, 36, 238);
-    color: rgb(245, 233, 233);
+}
+
+.addRecipeButton, .searchButton {
+    background-color: #58D68D;
+    color: white;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
     border-radius: 5px;
-}
-
-.addRecipeButton:hover {
-    color: rgb(186, 136, 243);
-    transition: all 150ms ease-in-out;
 }
 
 .recipeOutput {
@@ -90,7 +97,6 @@ small {
 
 button {
     background-color: rgb(215, 14, 14);
-    color: white;
     width: 120px;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
@@ -99,13 +105,16 @@ button {
 }
 
 button:hover {
-    color: rgb(242, 131, 131);
+    color: #D2B4DE;
     transition: all 150ms ease-in-out;
 }
 
 img {
     width: 250px;
     height: 120px;
+}
+.add_recipe_page {
+    background: white;
 }
 
 @media (max-width: 900px) {
