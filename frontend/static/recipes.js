@@ -6,9 +6,7 @@ let method = document.getElementById('method');
 let recipeImage = document.getElementById('recipeImage');
 let recipesList = document.getElementById('recipesList');
 
-// let recipes = [];
-// "APIKey": "24ae4c8089mshffa4467f28b70e3p17a659jsn3ed157dd594d"
-// let APTUrl = "https://rapidapi.com/spoonacular/api/recipe-food-nutrition/"
+let recipes = [];
 
 document.getElementById("recipeForm").addEventListener('submit', (event) => {
     event.preventDefault();
