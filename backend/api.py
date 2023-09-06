@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-RECIPES_FILE = "recipes.json"
+RECIPES_FILE = "../recipes.json"
 
 
 def load_recipes():
@@ -78,7 +78,7 @@ def create_recipe(recipe: Recipe):
         dict: The created recipe.
     """
     recipes = load_recipes()
-    recipe_id = max((recipe.id for recipe in recipes), default=0) + 1
+    recipe_id = max((recipe["id"] for recipe in recipes), default=0) + 1
     recipe.id = recipe_id
     recipes.append(recipe.model_dump())
     save_recipes(recipes)

@@ -26,14 +26,21 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
     };
 
     // Send a POST request to add the new recipe
-    fetch("http://localhost:8000/recipes", {
+    fetch("http://0.0.0.0:8000/recipes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(newRecipe),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response error.");
+        }
+        // Log the response for debugging
+        console.log("Server Response", response);
+        return response.json();
+    })
     .then(data => {
         // Handle success
         console.log("Recipe added successfully:", data);
@@ -44,12 +51,13 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
     })
     .catch(error => {
         console.error("Error adding recipe:", error);
+        console.log("Server Error Response")
     });
 });
 
 function displayRecipes() {
     // Fetch and display recipes
-    fetch("http://localhost:8000/recipes")
+    fetch("http://0.0.0.0:8000/recipes")
     .then(response => response.json())
     .then(recipe => {
         let recipesList = document.getElementById("recipesList");
@@ -119,7 +127,7 @@ function displayRecipes() {
 
 function deleteRecipe(recipeID) {
     // Send a DELETE request to remove the recipe
-    fetch(`APIUrl/${recipeID}`, {
+    fetch(`"http://0.0.0.0:8000/recipes"/${recipeID}`, {
         method: "DELETE"
     })
     .then(response => response.json())
@@ -137,8 +145,10 @@ function editRecipe(recipeID) {
     recipeName.value = recipeToEdit.name;
     ingredients.value = recipeToEdit.ingredients.join(', ');
     method.value = recipeToEdit.steps.join(`\n`);
-    recipeImage = recipeToEdit.image;
-
+    recipeImage.value = recipeToEdit.image;
+    if (recipeToEdit.image) {
+        recipeImage.src = recipeToEdit.image;
+    }
 }
 
 // Fetch and display recipes when the page loads
