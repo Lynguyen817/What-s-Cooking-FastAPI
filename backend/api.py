@@ -8,7 +8,7 @@ It uses a JSON file for storage, and FastAPI for the web server.
 import os.path
 import json
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
@@ -61,12 +61,26 @@ class Recipe(BaseModel):
     id: int = None
     name: str
     ingredients: list[str]
+    steps: list[str]
+    image: str
 
 
 @app.get("/recipes")
 def read_recipes():
     """Retrieve all recipes."""
     return load_recipes()
+
+
+@app.get("/recipes")
+async def search_recipes(query: str = Query(None, description="Search for recipes")):
+    """Search for recipes"""
+    recipes = load_recipes()
+    if not query:
+        return recipes
+
+    search_query = query.lower()
+    filtered_recipes = [r for r in recipes if search_query in r["name"].lower()]
+    return filtered_recipes
 
 
 @app.post("/recipes")

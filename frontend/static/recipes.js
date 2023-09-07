@@ -1,10 +1,21 @@
-
+let search_query = document.getElementById('search_query');
 let recipeForm = document.getElementById('recipeForm');
 let recipeName = document.getElementById('recipeName');
 let ingredients = document.getElementById('ingredients');
 let method = document.getElementById('method');
 let recipeImage = document.getElementById('recipeImage');
 let recipesList = document.getElementById('recipesList');
+
+// Add an event listener to the search query
+search_query.addEventListener('input', () => {
+    let searchTerm = search_query.value.toLowerCase();
+
+    let filteredRecipes = recipes.filter(recipe => {
+        return recipe.name.toLowerCase().includes(searchTerm);
+    });
+    displayRecipes(filteredRecipes);
+});
+
 
 let recipes = [];
 
@@ -26,7 +37,7 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
     };
 
     // Send a POST request to add the new recipe
-    fetch("http://0.0.0.0:8000/recipes", {
+    fetch("http://localhost:8000/recipes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -57,7 +68,7 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
 
 function displayRecipes() {
     // Fetch and display recipes
-    fetch("http://0.0.0.0:8000/recipes")
+    fetch("http://localhost:8000/recipes")
     .then(response => response.json())
     .then(recipe => {
         let recipesList = document.getElementById("recipesList");
@@ -127,7 +138,7 @@ function displayRecipes() {
 
 function deleteRecipe(recipeID) {
     // Send a DELETE request to remove the recipe
-    fetch(`"http://0.0.0.0:8000/recipes"/${recipeID}`, {
+    fetch(`"http://localhost:8000/recipes"/${recipeID}`, {
         method: "DELETE"
     })
     .then(response => response.json())

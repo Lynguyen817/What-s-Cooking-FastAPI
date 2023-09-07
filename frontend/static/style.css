@@ -32,14 +32,19 @@ p,
 ol, .backToHomePage {
     font-family: 'Nunito Sans', sans-serif;
     text-align: left;
-    color: rgb(118, 18, 138);
+    color: #34495E;
     font-size: 20px;
 }
 
 a {
     text-decoration: none;
-    color: rgb(245, 233, 233);
+    color: white;
 }
+a:hover {
+    color: #D2B4DE;
+    transition: all 150ms ease-in-out;
+}
+
 small {
     font-family: 'Sedgwick Ave Display', cursive;
     text-align: left;
@@ -57,14 +62,14 @@ small {
     font-family: 'EB Garamond', serif;
     font-size: 20px;
     font-weight: 600;
-    color: rgb(118, 18, 138);
+    color: #34495E;
 }
 
 .addRecipe {
     width: 310px;
     color: rgb(246, 244, 244);
-    background-color: none;
-    box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
+    background-color: #D5F5E3;
+    box-shadow: 0 15px 17px rgb(0, 0, 0, 0.4);
     border: hidden;
     border-radius: 5px;
     padding: 10px 8px;
@@ -87,7 +92,7 @@ small {
 
 .recipeOutput {
     width: 400px;
-    background-color: none;
+    background-color: #D5F5E3;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
     border-radius: 5px;

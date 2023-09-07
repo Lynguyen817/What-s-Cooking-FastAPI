@@ -19,30 +19,9 @@
 </head>
 <body class="add_recipe_page">
     <p><a href="index.html" class="backToHomePage ms-3"><--Back to homepage</a></p>
-    <h1>What to cook?</h1>
+    <h1>Recipes</h1>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4 addRecipe text-left">
-                <h2>Add Recipe</h2>
-                <form id="recipeForm">
-                    <label for="recipeName" class="recipeName">Recipe Name</label><br>
-                    <input type="text" id="recipeName" class="border-0 rounded-3" name="recipeName" required><br>
-
-                    <label for="ingredients" class="ingredients">Ingredients</label><br>
-                    <textarea name="ingredients" id="ingredients" class="border-0 rounded-3"
-                        placeholder="List ingredients separated by commas" required></textarea><br>
-
-                    <label for="method" class="method">Steps for Preparation</label><br>
-                    <textarea name="method" id="method" class="border-0 rounded-3" placeholder="Steps for Preparation" required></textarea><br>
-
-                    <label for="recipeImage" class="recipeImage">Recipe Image URL:</label><br>
-                    <input type="url" id="recipeImage" name="recipeImage" class="border-0 rounded-3"
-                        placeholder="http://example.com/my-dish.jpg"><br>
-
-                    <button type="submit" class="mt-2 addRecipeButton">Add Recipe</button>
-                </form>
-            </div>
-            <div class="col-md-2"></div>
             <div class="col-md-6 recipeOutput text-center">
                 <div id="recipesList"></div>
                 <script src="../static/recipes.js"></script>
