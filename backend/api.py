@@ -66,21 +66,15 @@ class Recipe(BaseModel):
 
 
 @app.get("/recipes")
-def read_recipes():
-    """Retrieve all recipes."""
-    return load_recipes()
-
-
-@app.get("/recipes")
 async def search_recipes(query: str = Query(None, description="Search for recipes")):
-    """Search for recipes"""
+    """Retrieve all recipes or search for recipes."""
     recipes = load_recipes()
-    if not query:
-        return recipes
 
-    search_query = query.lower()
-    filtered_recipes = [r for r in recipes if search_query in r["name"].lower()]
-    return filtered_recipes
+    if query:
+        search_query = query.lower()
+        filtered_recipes = [r for r in recipes if search_query in r["name"].lower()]
+        return filtered_recipes
+    return recipes
 
 
 @app.post("/recipes")

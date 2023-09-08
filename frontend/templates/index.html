@@ -24,10 +24,10 @@
         <h1>Recipe Keeper</h1>
         <p Class="head">COOKING LOVERS</p>
     </header>
-    <form class="d-flex mt-3 m-2" role="search" method="post" action="/recipes">
+    <form id="searchForm" class="d-flex mt-3 m-2" role="search" method="get" action="/recipes">
         <label for="search_query"></label>
-        <input class="form-control me-2" type="text" name="search_query" id="search_query" placeholder="Search for a recipe">
-        <button class="searchButton" type="submit"><a href="search_results.html">Search</a></button>
+        <input class="form-control me-2" type="text" name="query" id="search_query" placeholder="Search for a recipe">
+        <button class="searchButton" type="submit">Search</button>
     </form>
     <button type="submit" class="addRecipeButton mt-2 ms-3"><a href="add_recipe.html">Add Recipe</a></button>
 

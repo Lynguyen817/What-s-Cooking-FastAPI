@@ -1,20 +1,10 @@
-let search_query = document.getElementById('search_query');
+let searchForm = document.getElementById('searchForm')
 let recipeForm = document.getElementById('recipeForm');
 let recipeName = document.getElementById('recipeName');
 let ingredients = document.getElementById('ingredients');
 let method = document.getElementById('method');
 let recipeImage = document.getElementById('recipeImage');
 let recipesList = document.getElementById('recipesList');
-
-// Add an event listener to the search query
-search_query.addEventListener('input', () => {
-    let searchTerm = search_query.value.toLowerCase();
-
-    let filteredRecipes = recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(searchTerm);
-    });
-    displayRecipes(filteredRecipes);
-});
 
 
 let recipes = [];
@@ -65,6 +55,7 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
         console.log("Server Error Response")
     });
 });
+
 
 function displayRecipes() {
     // Fetch and display recipes
@@ -149,6 +140,7 @@ function deleteRecipe(recipeID) {
     })
 }
 
+
 function editRecipe(recipeID) {
     let recipeToEdit = recipes.find(recipe => recipe.id === recipeID);
 
@@ -164,3 +156,19 @@ function editRecipe(recipeID) {
 
 // Fetch and display recipes when the page loads
 displayRecipes();
+
+// Add an event listener to the form submission
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let searchTerm = event.target[0].value.toLowerCase();
+
+    // Send the search query to the sever
+    fetch(`/recipes?query=${searchTerm}`)
+        .then(response => response.json())
+        .then(data => {
+            displayRecipes(data)
+        })
+        .catch(error => {
+            console.error("Error fetching recipes", error);
+        });
+});

@@ -15,7 +15,7 @@ h1 {
 
 h2 {
     font-family: 'Nunito Sans', sans-serif;
-    font-size: 28px;
+    font-size: 23px;
     font-weight: 600;
     color: rgb(118, 18, 138);
 }
@@ -60,7 +60,7 @@ small {
 .method,
 .recipeImage {
     font-family: 'EB Garamond', serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #34495E;
 }
