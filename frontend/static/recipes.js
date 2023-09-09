@@ -1,4 +1,4 @@
-let searchForm = document.getElementById('searchForm')
+let searchForm = document.getElementById('searchForm');
 let recipeForm = document.getElementById('recipeForm');
 let recipeName = document.getElementById('recipeName');
 let ingredients = document.getElementById('ingredients');
@@ -9,7 +9,7 @@ let recipesList = document.getElementById('recipesList');
 
 let recipes = [];
 
-document.getElementById("recipeForm").addEventListener('submit', (event) => {
+recipeForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     let enteredRecipeName = recipeName.value;
@@ -48,18 +48,18 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
         // Clear the form
         document.getElementById("recipeForm").reset();
         // Push the new recipe into the recipes array
-        recipes.push(data)
+        recipes.push(data);
         // Fetch and display the updated list of recipes
         displayRecipes();
     })
     .catch(error => {
         console.error("Error adding recipe:", error);
-        console.log("Server Error Response")
+        console.log("Server Error Response");
     });
 });
 
 
-function displayRecipes() {
+function displayRecipes(recipesData = recipes) {
     // Fetch and display recipes
     fetch("http://localhost:8000/recipes")
     .then(response => response.json())
@@ -68,7 +68,7 @@ function displayRecipes() {
         // Clear the previous content
         recipesList.innerHTML = '';
 
-        recipe.forEach((recipe, index) => {
+        recipesData.forEach((recipe, index) => {
         let recipeItem = document.createElement('div');
         recipeItem.classList.add('recipe');
 
@@ -167,8 +167,8 @@ searchForm.addEventListener('submit', (event) => {
     // Send the search query to the server
     fetch(`/recipes?query=${searchTerm}`)
         .then(response => response.json())
-        .then(data => {
-            displayRecipes(data)
+        .then(searchResults => {
+            displayRecipes(searchResults)
         })
         .catch(error => {
             console.error("Error fetching recipes", error);
