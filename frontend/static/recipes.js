@@ -47,6 +47,8 @@ document.getElementById("recipeForm").addEventListener('submit', (event) => {
         console.log("Recipe added successfully:", data);
         // Clear the form
         document.getElementById("recipeForm").reset();
+        // Push the new recipe into the recipes array
+        recipes.push(data)
         // Fetch and display the updated list of recipes
         displayRecipes();
     })
@@ -162,7 +164,7 @@ searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     let searchTerm = event.target[0].value.toLowerCase();
 
-    // Send the search query to the sever
+    // Send the search query to the server
     fetch(`/recipes?query=${searchTerm}`)
         .then(response => response.json())
         .then(data => {

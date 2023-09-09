@@ -73,7 +73,9 @@ async def search_recipes(query: str = Query(None, description="Search for recipe
     if query:
         search_query = query.lower()
         filtered_recipes = [r for r in recipes if search_query in r["name"].lower()]
+        print("Filtered Recipes", filtered_recipes)
         return filtered_recipes
+    print("All Recipes:", recipes)
     return recipes
 
 
@@ -90,6 +92,7 @@ def create_recipe(recipe: Recipe):
     recipe.id = recipe_id
     recipes.append(recipe.model_dump())
     save_recipes(recipes)
+    print(recipe)
     return recipe
 
 
