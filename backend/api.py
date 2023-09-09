@@ -10,7 +10,6 @@ import json
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-#from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 import uvicorn
 
@@ -95,7 +94,6 @@ def create_recipe(recipe: Recipe):
     save_recipes(recipes)
     print(recipe)
     return recipe
-    #return RedirectResponse(url="/recipes")
 
 
 @app.get("/recipes/{recipe_id}")
