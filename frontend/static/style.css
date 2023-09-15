@@ -48,7 +48,7 @@ a:hover {
 small {
     font-family: 'Sedgwick Ave Display', cursive;
     text-align: left;
-    color: rgb(248, 247, 249);
+    color: #34495E;
     font-size: 35px;
 }
 .form-control {
@@ -101,7 +101,7 @@ small {
 }
 
 button {
-    background-color: rgb(215, 14, 14);
+    background-color: #F77976;
     width: 120px;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
@@ -118,7 +118,9 @@ img {
     width: 250px;
     height: 120px;
 }
-.add_recipe_page {
+.add_recipe_page,
+.all_recipes_page,
+.search_recipe {
     background: white;
 }
 

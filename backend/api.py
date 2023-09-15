@@ -79,6 +79,13 @@ async def search_recipes(query: str = Query(None, description="Search for recipe
     return recipes
 
 
+@app.get("/get_all_recipes")
+def get_all_recipes():
+    """ Load all recipes."""
+    all_recipes = load_recipes()
+    return all_recipes
+
+
 @app.post("/recipes")
 def create_recipe(recipe: Recipe):
     """Create a new recipe.

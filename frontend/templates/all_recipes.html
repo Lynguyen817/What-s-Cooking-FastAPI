@@ -16,23 +16,17 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/style.css">
-
 </head>
-
-<body>
-    <header>
-        <h1>Recipe Keeper</h1>
-        <p Class="head">COOKING LOVERS</p>
-    </header>
-    <form id="searchForm" class="d-flex mt-3 m-2" role="search" method="get" action="/recipes">
-        <label for="search_query"></label>
-        <input class="form-control me-2" type="text" name="query" id="search_query" placeholder="Search for a recipe">
-        <button class="searchButton" type="submit">Search</button>
-    </form>
-    <button type="submit" class="addRecipeButton mt-2 ms-3"><a href="add_recipe.html">Add Recipe</a></button>
-    <br>
-    <button id="allRecipesButton" class="addRecipeButton mt-2 ms-3"><a href="all_recipes.html">All Recipes</a></button>
+<body class="all_recipes_page">
+    <p><a href="index.html" class="backToHomePage ms-3"><--Back to homepage</a></p>
+    <h1>What to cook?</h1>
+        <div class="container mt-5">
+            <div class="row">
+                <div id="allRecipes" class="col-md-4">
+                    <!--This is where all recipes will be displayed -->
+                </div>
+            </div>
+        </div>
     <script src="../static/recipes.js"></script>
 </body>
-
 </html>
