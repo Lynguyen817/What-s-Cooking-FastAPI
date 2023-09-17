@@ -24,15 +24,31 @@
         <h1>Recipe Keeper</h1>
         <p Class="head">COOKING LOVERS</p>
     </header>
-    <form id="searchForm" class="d-flex mt-3 m-2" role="search" method="get" action="/recipes">
+    <form id="searchForm" class="d-flex mt-3 m-2" role="search" method="get" action="search.html">
         <label for="search_query"></label>
         <input class="form-control me-2" type="text" name="query" id="search_query" placeholder="Search for a recipe">
         <button class="searchButton" type="submit">Search</button>
     </form>
     <button type="submit" class="addRecipeButton mt-2 ms-3"><a href="add_recipe.html">Add Recipe</a></button>
     <br>
-    <button id="allRecipesButton" class="addRecipeButton mt-2 ms-3"><a href="all_recipes.html">All Recipes</a></button>
-    <script src="../static/recipes.js"></script>
-</body>
+    <button class="addRecipeButton mt-2 ms-3" onclick='location.href="all_recipes.html"'>All Recipes</a></button>
 
+    <script src="../static/recipes.js"></script>
+    <script src="../static/search.js"></script>
+    <script src="../static/all_recipes.js"></script>
+
+    <script>
+        // Add an event listener to the search form in index.html
+        document.addEventListener("DOMContentLoaded", function () {
+            let searchForm = document.getElementById("searchForm");
+
+            searchForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let searchQuery = document.getElementById("search_query").value.toLowerCase();
+                console.log("Search Query:", searchQuery);
+                searchRecipes(searchQuery);
+            });
+        });
+    </script>
+</body>
 </html>

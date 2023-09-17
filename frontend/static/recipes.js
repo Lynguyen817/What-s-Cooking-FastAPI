@@ -1,11 +1,9 @@
-let searchForm = document.getElementById('searchForm');
 let recipeForm = document.getElementById('recipeForm');
 let recipeName = document.getElementById('recipeName');
 let ingredients = document.getElementById('ingredients');
 let method = document.getElementById('method');
 let recipeImage = document.getElementById('recipeImage');
 let recipesList = document.getElementById('recipesList');
-let allRecipes = document.getElementById('allRecipes');
 
 
 let recipes = [];
@@ -166,103 +164,116 @@ function editRecipe(recipeID) {
 // Fetch and display recipes when the page loads
 displayRecipes();
 
+//
+//console.log("JavaScript file loaded");
+//// Add an event listener to the search form
+//searchForm.addEventListener('submit', (event) => {
+//    event.preventDefault();
+//    let searchQuery = document.getElementById("search_query").value.toLowerCase();
+//    console.log("Search Query:", searchQuery);
+//    searchRecipes(searchQuery);
+//});
+//
+//function searchRecipes(search_query) {
+//    let searchTerm = document.getElementById("search_query").value.toLowerCase();
+//    // Send search query to the server
+//    let url = "http://127.0.0.1:8000/recipes?query=Pasta "
+////    let url = `"http://localhost:8000/recipes?query="${encodeURIComponent(searchTerm)}`;
+//    fetch(url, {
+//        method: "GET"
+//        })
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error("Network response error.");
+//            }
+//            return response.json();
+//        })
+//        .then(searchResults => {
+//            console.log("Search results:", searchResults);
+//            displayRecipes(searchResults);
+//        })
+//        .catch(error => {
+//            console.error("Error fetching recipes", error);
+//        });
+//}
 
-// Add an event listener to the search form
-searchForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    let searchQuery = document.getElementById("search_query").value.toLowerCase();
-    searchRecipes(searchQuery);
-});
-
-function searchRecipes(search_query) {
-    let searchTerm = document.getElementById("search_query").value.toLowerCase();
-
-    // Send search query to the server
-    let url = `"http://localhost:8000/recipes?query="${encodeURIComponent(searchTerm)}`
-    fetch(url, {
-        method: "GET"
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response error.");
-            }
-            return response.json();
-        })
-        .then(searchResults => {
-            console.log("Search results:", searchResults);
-            displayRecipes(searchResults);
-        })
-        .catch(error => {
-            console.error("Error fetching recipes", error);
-        });
-}
-
-
-
-// Fetch and display recipes when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-    displayAllRecipes();
-});
-
-// Add an event listener to the "All Recipes" button
-let allRecipesButton = document.getElementById('allRecipesButton');
-allRecipesButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    displayAllRecipes();
-});
-
-// Function to display all saved recipes
-function displayAllRecipes() {
-    console.log("Displaying all recipes");
-    // Fetch and display all recipes
-    fetch("http://localhost:8000/get_all_recipes")
-        .then(response => response.json())
-        .then(recipes => {
-            let allRecipes = document.getElementById("allRecipes");
-            // Clear the previous content
-            allRecipes.innerHTML = '';
-
-            recipes.forEach((recipe) => {
-                let recipeObject = document.createElement('div');
-                recipeObject.classList.add('recipe');
-
-                // Add recipe name
-                let recipeNameHeading = document.createElement('h2');
-                recipeNameHeading.innerHTML = recipe.name.toUpperCase();
-
-
-                // Add image if available
-                if (recipe.image) {
-                    let recipeImage = document.createElement('img');
-                    recipeImage.src = recipe.image;
-                    recipeImage.alt = `${recipe.name} Image`;
-                    recipeObject.appendChild(recipeImage);
-                }
-
-                 // Create a delete button
-                let deleteButton = document.createElement('button');
-                deleteButton.innerHTML = `Delete`;
-                deleteButton.onclick = function() {
-                    deleteRecipe(recipe.id);
-                };
-
-                // Create an edit button
-                let editButton = document.createElement('button');
-                editButton.innerHTML = `Edit`;
-                editButton.onclick = function() {
-                    editRecipe(recipe.id);
-                };
-
-                // Append elements to the recipe object
-                recipeObject.appendChild(recipeNameHeading);
-                recipeObject.appendChild(recipeImage);
-                recipeObject.appendChild(deleteButton);
-                recipeObject.appendChild(editButton);
-
-                allRecipes.appendChild(recipeObject);
-                });
-            })
-        .catch(error => {
-            console.error("Error loading all recipes:", error);
-        });
-    }
+//
+//
+//console.log("JavaScript file loaded");
+//// Add an event listener to the "All Recipes" button after the DOM is loaded
+//document.addEventListener("DOMContentLoaded", function () {
+//    console.log("Before getElementById");
+//    let allRecipesButton = document.getElementById('allRecipesButton');
+//    console.log("Button:", allRecipesButton);
+//    if (allRecipesButton) {
+//        allRecipesButton.addEventListener("click", function(event) {
+//            event.preventDefault();
+//            displayAllRecipes();
+//        });
+//    }
+//});
+//
+//// Function to display all saved recipes
+//function displayAllRecipes(recipes) {
+//    console.log("Displaying all recipes");
+//    // Fetch and display all recipes
+//    fetch("/get_all_recipes")
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error("Network response error.");
+//            }
+//            return response.json();
+//        })
+//        .then(recipes => {
+//            let allRecipes = document.getElementById("allRecipes");
+//            // Clear the previous content
+//            allRecipes.innerHTML = '';
+//
+//            recipes.forEach((recipe, index) => {
+//                let recipeObject = document.createElement('div');
+//                recipeObject.classList.add('recipe');
+//
+//                // Add recipe name
+//                let recipeNameHeading = document.createElement('h2');
+//                recipeNameHeading.innerHTML = recipe.name.toUpperCase();
+//
+//
+//                // Add image if available
+//                if (recipe.image) {
+//                    let recipeImage = document.createElement('img');
+//                    recipeImage.src = recipe.image;
+//                    recipeImage.alt = `${recipe.name} Image`;
+//                    recipeObject.appendChild(recipeImage);
+//                }
+//
+//                 // Create a delete button
+//                let deleteButton = document.createElement('button');
+//                deleteButton.innerHTML = `Delete`;
+//                deleteButton.onclick = function() {
+//                    deleteRecipe(recipe.id);
+//                };
+//
+//                // Create an edit button
+//                let editButton = document.createElement('button');
+//                editButton.innerHTML = `Edit`;
+//                editButton.onclick = function() {
+//                    editRecipe(recipe.id);
+//                };
+//
+//                // Append elements to the recipe object
+//                recipeObject.appendChild(recipeNameHeading);
+//                recipeObject.appendChild(recipeImage);
+//                recipeObject.appendChild(deleteButton);
+//                recipeObject.appendChild(editButton);
+//
+//                allRecipes.appendChild(recipeObject);
+//                });
+//                console.log("Received recipes data", recipes);
+//            })
+//        .catch(error => {
+//            console.error("Error loading all recipes:", error);
+//        });
+//    }
+//
+//
+//

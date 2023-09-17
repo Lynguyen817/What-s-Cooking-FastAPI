@@ -83,6 +83,7 @@ async def search_recipes(query: str = Query(None, description="Search for recipe
 def get_all_recipes():
     """ Load all recipes."""
     all_recipes = load_recipes()
+    print("Get All Recipes:", all_recipes)
     return all_recipes
 
 
@@ -168,5 +169,6 @@ def delete_recipe(recipe_id: int):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
 
