@@ -1,18 +1,5 @@
 
-
-//console.log("JavaScript file loaded for All Recipes page");
-//// Add an event listener to the "All Recipes" button after the DOM is loaded
-//document.addEventListener("DOMContentLoaded", function () {
-//    let allRecipesButton = document.getElementById('allRecipesButton');
-//    console.log("Button:", allRecipesButton);
-//    if (allRecipesButton) {
-//        allRecipesButton.addEventListener("click", function(event) {
-//            event.preventDefault();
-//            displayAllRecipes();
-//        });
-//    }
-//});
-
+console.log("Javascript file loaded.")
 // Function to display all saved recipes
 function displayAllRecipes() {
     console.log("Displaying all recipes for All Recipes page");
@@ -75,5 +62,6 @@ function displayAllRecipes() {
         });
     }
 
+displayAllRecipes()
 
 
