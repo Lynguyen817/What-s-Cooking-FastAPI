@@ -1,17 +1,19 @@
+let recipes;
 
 console.log("Javascript file loaded.")
 // Function to display all saved recipes
 function displayAllRecipes() {
     console.log("Displaying all recipes for All Recipes page");
     // Fetch and display all recipes
-    fetch("/get_all_recipes")
+    fetch("http://localhost:8000/get_all_recipes")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Network response error.");
             }
             return response.json();
         })
-        .then(recipes => {
+        .then(data => {
+            recipes = data;
             let allRecipes = document.getElementById("allRecipes");
             // Clear the previous content
             allRecipes.innerHTML = '';
@@ -24,10 +26,10 @@ function displayAllRecipes() {
                 let recipeNameHeading = document.createElement('h2');
                 recipeNameHeading.innerHTML = recipe.name.toUpperCase();
 
-
+                let recipeImage;
                 // Add image if available
                 if (recipe.image) {
-                    let recipeImage = document.createElement('img');
+                    recipeImage = document.createElement('img');
                     recipeImage.src = recipe.image;
                     recipeImage.alt = `${recipe.name} Image`;
                     recipeObject.appendChild(recipeImage);
@@ -40,18 +42,10 @@ function displayAllRecipes() {
                     deleteRecipe(recipe.id);
                 };
 
-                // Create an edit button
-                let editButton = document.createElement('button');
-                editButton.innerHTML = `Edit`;
-                editButton.onclick = function() {
-                    editRecipe(recipe.id);
-                };
-
                 // Append elements to the recipe object
                 recipeObject.appendChild(recipeNameHeading);
                 recipeObject.appendChild(recipeImage);
                 recipeObject.appendChild(deleteButton);
-                recipeObject.appendChild(editButton);
 
                 allRecipes.appendChild(recipeObject);
                 });
@@ -61,6 +55,29 @@ function displayAllRecipes() {
             console.error("Error loading all recipes:", error);
         });
     }
+
+
+function deleteRecipe(recipeID) {
+    // Send a DELETE request to remove the recipe
+    fetch(`/recipes/${recipeID}`, {
+        method: "DELETE"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response error.");
+        }
+    return response.text();
+    })
+    .then(data => {
+        console.log("Recipe deleted successfully:", data);
+        // Fetch and display the updated list od recipes
+        displayAllRecipes();
+    })
+    .catch(error => {
+        console.error("Error deleting recipe:", error);
+    });
+}
+
 
 displayAllRecipes()
 
