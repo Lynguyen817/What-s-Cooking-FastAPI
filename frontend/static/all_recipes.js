@@ -59,7 +59,7 @@ function displayAllRecipes() {
 
 function deleteRecipe(recipeID) {
     // Send a DELETE request to remove the recipe
-    fetch(`/recipes/${recipeID}`, {
+    fetch("http://localhost:8000/recipes/" + recipeID, {
         method: "DELETE"
     })
     .then(response => {

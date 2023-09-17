@@ -2,7 +2,7 @@
 function searchRecipes(search_query) {
     let searchTerm = document.getElementById("search_query").value.toLowerCase();
     // Send search query to the server
-    let url = `/recipes?query=${encodeURIComponent(searchTerm)}`;
+    let url = "http:/recipes?query=" + encodeURIComponent(searchTerm)`;
     fetch(url, {
         method: "GET"
         })
