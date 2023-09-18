@@ -47,6 +47,7 @@ function displayAllRecipes() {
                 recipeObject.appendChild(recipeImage);
                 recipeObject.appendChild(deleteButton);
 
+
                 allRecipes.appendChild(recipeObject);
                 });
                 console.log("Received recipes data", recipes);
@@ -77,7 +78,6 @@ function deleteRecipe(recipeID) {
         console.error("Error deleting recipe:", error);
     });
 }
-
 
 displayAllRecipes()
 

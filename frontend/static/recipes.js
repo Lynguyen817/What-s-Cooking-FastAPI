@@ -122,16 +122,21 @@ function displayRecipes(recipesData = recipes) {
 
 
 
-function editRecipe(recipeID) {
-    let recipeToEdit = recipes.find(recipe => recipe.id === recipeID);
+function editRecipe(recipeIndex) {
+//    let recipeToEdit = recipes.find(recipe => recipe.id === recipeID);
+    if (recipeIndex >= 0 && recipeIndex < recipes.length) {
+        let recipeToEdit = recipes[recipeIndex];
 
-    //  Populate the form fields with existing recipe details
-    recipeName.value = recipeToEdit.name;
-    ingredients.value = recipeToEdit.ingredients.join(', ');
-    method.value = recipeToEdit.steps.join(`\n`);
-    recipeImage.value = recipeToEdit.image;
-    if (recipeToEdit.image) {
-        recipeImage.src = recipeToEdit.image;
+        //  Populate the form fields with existing recipe details
+        recipeName.value = recipeToEdit.name;
+        ingredients.value = recipeToEdit.ingredients.join(', ');
+        method.value = recipeToEdit.steps.join(`\n`);
+        recipeImage.value = recipeToEdit.image;
+        if (recipeToEdit.image) {
+            recipeImage.src = recipeToEdit.image;
+        }
+    } else {
+        console.error("Invalid recipe index:", recipeIndex);
     }
 }
 
