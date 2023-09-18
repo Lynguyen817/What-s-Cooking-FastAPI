@@ -1,29 +1,11 @@
 
-function searchRecipes(search_query) {
-    let searchTerm = document.getElementById("search_query").value.toLowerCase();
-    // Send search query to the server
-    let url = "http:/recipes?query=" + encodeURIComponent(searchTerm)`;
-    fetch(url, {
-        method: "GET"
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response error.");
-            }
-            return response.json();
-        })
-        .then(searchResults => {
-            console.log("Search results:", searchResults);
-            displaySearchResults(searchResults);
-        })
-        .catch(error => {
-            console.error("Error fetching recipes", error);
-        });
-}
-
-
 function displaySearchResults(searchResults) {
     let searchResultsDiv = document.getElementById("searchResult");
+
+    if (!searchResultsDiv) {
+        console.error("Element with ID 'searchResult' not found.");
+        return;
+    }
     searchResultsDiv.innerHTML = '';
 
     if (searchResults.length === 0) {
@@ -43,21 +25,21 @@ function displaySearchResults(searchResults) {
 
 
             // Add image if available
-            if (recipe.image) {
+            if (result.image) {
                 let recipeImage = document.createElement('img');
-                recipeImage.src = recipe.image;
-                recipeImage.alt = `${recipe.name} Image`;
+                recipeImage.src = result.image;
+                recipeImage.alt = `${result.name} Image`;
                 resultDiv.appendChild(recipeImage);
             }
 
             // Add ingredients list
             let ingredientsList = document.createElement('p');
-            ingredientsList.textContent = `Ingredients: ${recipe.ingredients.join(', ')}`;
+            ingredientsList.textContent = `Ingredients: ${result.ingredients.join(', ')}`;
 
             // Add steps
             let stepsList = document.createElement('ol');
             stepsList.innerHTML = `<small>Steps</small>`;
-            recipe.steps.forEach(step => {
+            result.steps.forEach(step => {
                 let stepItem = document.createElement('li');
                 stepItem.textContent = step;
                 stepsList.appendChild(stepItem);
@@ -76,3 +58,28 @@ function displaySearchResults(searchResults) {
             console.error("Error fetching recipes:", error);
         });
     }
+
+
+
+function searchRecipes(search_query) {
+    let searchTerm = document.getElementById("search_query").value.toLowerCase();
+    // Send search query to the server
+    let url = "http://localhost:8000/recipes?query=" + encodeURIComponent(searchTerm);
+    fetch(url, {
+        method: "GET"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response error.");
+            }
+            return response.json();
+        })
+        .then(searchResults => {
+            console.log("Search results:", searchResults);
+            displaySearchResults(searchResults);
+        })
+        .catch(error => {
+            console.error("Error fetching recipes", error);
+        });
+}
+
