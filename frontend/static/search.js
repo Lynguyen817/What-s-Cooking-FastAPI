@@ -1,4 +1,8 @@
-
+/**
+ * Display search results in the specified target container.
+ * searchResults - An array of search results to display.
+ * targetContainer - The ID of the container where search results should be displayed.
+ */
 function displaySearchResults(searchResults, targetContainer) {
     console.log("Display search results in:", targetContainer);
     let searchResultsDiv = document.getElementById(targetContainer);
@@ -24,7 +28,7 @@ function displaySearchResults(searchResults, targetContainer) {
             let recipeName = document.createElement('h2');
             recipeName.innerHTML = result.name.toUpperCase();
 
-
+            let recipeImage;
             // Add image if available
             if (result.image) {
                 let recipeImage = document.createElement('img');
@@ -48,18 +52,24 @@ function displaySearchResults(searchResults, targetContainer) {
 
             // Append elements to the recipe item
             resultDiv.appendChild(recipeName);
-            resultDiv.appendChild(recipeImage);
             resultDiv.appendChild(ingredientsList);
             resultDiv.appendChild(stepsList);
+            if (recipeImage) {
+                resultDiv.appendChild(recipeImage);
+            }
 
             // Append the resultDiv to the searchResultsDiv
             searchResultsDiv.appendChild(resultDiv);
         });
     }
 
-
+/**
+ * Search for recipes using a given search query and display the results in the specified target container.
+ * search_query - The search query entered by the user.
+ * targetContainer - The ID of the container where search results should be displayed.
+ */
 function searchRecipes(search_query, targetContainer) {
-   let searchTerm = document.getElementById("search_query").value.toLowerCase();
+    let searchTerm = search_query.toLowerCase();
     // Send search query to the server
     let url = "http://localhost:8000/recipes?query=" + encodeURIComponent(searchTerm);
     fetch(url, {

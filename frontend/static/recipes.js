@@ -121,7 +121,7 @@ function displayRecipes(recipesData = recipes) {
     }
 
 
-
+// Function to edit a recipe
 function editRecipe(recipeIndex) {
 //    let recipeToEdit = recipes.find(recipe => recipe.id === recipeID);
     if (recipeIndex >= 0 && recipeIndex < recipes.length) {
