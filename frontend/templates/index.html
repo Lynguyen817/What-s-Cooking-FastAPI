@@ -33,21 +33,21 @@
     <br>
     <button class="addRecipeButton mt-2 ms-3" onclick='location.href="all_recipes.html"'>All Recipes</a></button>
 
+    <script src="../static/search.js"></script>
+    <script src="../static/recipes.js"></script>
     <script>
         // Add an event listener to the search form in index.html
         document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOM content loaded.");
             let searchForm = document.getElementById("searchForm");
 
             searchForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 let searchQuery = document.getElementById("search_query").value.toLowerCase();
                 console.log("Search Query:", searchQuery);
-                searchRecipes(searchQuery);
+                searchRecipes(searchQuery, "searchResult");
             });
         });
     </script>
-    <script src="../static/search.js"></script>
-    <script src="../static/recipes.js"></script>
-
 </body>
 </html>

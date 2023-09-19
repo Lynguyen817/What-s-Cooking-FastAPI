@@ -1,6 +1,7 @@
 
-function displaySearchResults(searchResults) {
-    let searchResultsDiv = document.getElementById("searchResult");
+function displaySearchResults(searchResults, targetContainer) {
+    console.log("Display search results in:", targetContainer);
+    let searchResultsDiv = document.getElementById(targetContainer);
 
     if (!searchResultsDiv) {
         console.error("Element with ID 'searchResult' not found.");
@@ -53,16 +54,12 @@ function displaySearchResults(searchResults) {
 
             // Append the resultDiv to the searchResultsDiv
             searchResultsDiv.appendChild(resultDiv);
-        })
-        .catch(error => {
-            console.error("Error fetching recipes:", error);
         });
     }
 
 
-
-function searchRecipes(search_query) {
-    let searchTerm = document.getElementById("search_query").value.toLowerCase();
+function searchRecipes(search_query, targetContainer) {
+   let searchTerm = document.getElementById("search_query").value.toLowerCase();
     // Send search query to the server
     let url = "http://localhost:8000/recipes?query=" + encodeURIComponent(searchTerm);
     fetch(url, {
@@ -76,7 +73,7 @@ function searchRecipes(search_query) {
         })
         .then(searchResults => {
             console.log("Search results:", searchResults);
-            displaySearchResults(searchResults);
+            displaySearchResults(searchResults, targetContainer);
         })
         .catch(error => {
             console.error("Error fetching recipes", error);
