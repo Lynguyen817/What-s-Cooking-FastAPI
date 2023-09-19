@@ -66,7 +66,7 @@ small {
 }
 
 .addRecipe {
-    width: 310px;
+    width: 350px;
     color: rgb(246, 244, 244);
     background-color: #D5F5E3;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.4);
@@ -91,7 +91,7 @@ small {
 }
 
 .recipeOutput {
-    width: 400px;
+    width: 500px;
     background-color: #D5F5E3;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
@@ -123,6 +123,9 @@ img {
 .all_recipes_page,
 .search_recipe {
     background: white;
+}
+.search-result {
+    margin-top: 30px;
 }
 
 @media (max-width: 900px) {
