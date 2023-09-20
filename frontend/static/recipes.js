@@ -98,19 +98,11 @@ function displayRecipes(recipesData = recipes) {
                 stepsList.appendChild(stepItem);
             });
 
-            // Create an edit button
-            let editButton = document.createElement('button');
-            editButton.innerHTML = `Edit`;
-            editButton.onclick = function() {
-                editRecipe(index);
-            };
-
             // Append elements to the recipe item
             recipeItem.appendChild(recipeNameHeading);
             recipeItem.appendChild(recipeImage);
             recipeItem.appendChild(ingredientsList);
             recipeItem.appendChild(stepsList);
-            recipeItem.appendChild(editButton)
 
             recipesList.appendChild(recipeItem);
             });
@@ -120,25 +112,6 @@ function displayRecipes(recipesData = recipes) {
         });
     }
 
-
-// Function to edit a recipe
-function editRecipe(recipeIndex) {
-//    let recipeToEdit = recipes.find(recipe => recipe.id === recipeID);
-    if (recipeIndex >= 0 && recipeIndex < recipes.length) {
-        let recipeToEdit = recipes[recipeIndex];
-
-        //  Populate the form fields with existing recipe details
-        recipeName.value = recipeToEdit.name;
-        ingredients.value = recipeToEdit.ingredients.join(', ');
-        method.value = recipeToEdit.steps.join(`\n`);
-        recipeImage.value = recipeToEdit.image;
-        if (recipeToEdit.image) {
-            recipeImage.src = recipeToEdit.image;
-        }
-    } else {
-        console.error("Invalid recipe index:", recipeIndex);
-    }
-}
 
 // Fetch and display recipes when the page loads
 displayRecipes();

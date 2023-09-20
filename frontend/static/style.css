@@ -35,6 +35,11 @@ ol, .backToHomePage {
     color: #34495E;
     font-size: 20px;
 }
+.backToHomePage {
+    display: block;
+    margin-top: 20px;
+    font-size: 15px;
+}
 
 a {
     text-decoration: none;
@@ -82,12 +87,16 @@ small {
     width: 200px;
 }
 
-.addRecipeButton, .searchButton {
+.addRecipeButton, .searchButton, .saveChange {
     background-color: #58D68D;
     color: white;
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
     border-radius: 5px;
+}
+
+.saveChange:hover {
+    background-color: #0056b3;
 }
 
 .recipeOutput {
@@ -106,8 +115,7 @@ button {
     box-shadow: 0 15px 17px rgb(0, 0, 0, 0.6);
     border: hidden;
     border-radius: 5px;
-    margin-bottom: 10px;
-    margin-top:5px;
+    margin: 10px 5px;
 }
 
 button:hover {
@@ -121,9 +129,29 @@ img {
 }
 .add_recipe_page,
 .all_recipes_page,
-.search_recipe {
+.search_recipe,
+.edit_recipe_page {
     background: white;
 }
+.edit_recipe_page {
+    margin: 0 auto;
+}
+#recipeEditForm {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
 .search-result {
     margin-top: 30px;
 }

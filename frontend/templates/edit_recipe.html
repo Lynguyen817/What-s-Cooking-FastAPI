@@ -17,22 +17,28 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/style.css">
 </head>
-<body class="all_recipes_page">
+<body class="edit_recipe_page">
     <p><a href="index.html" class="backToHomePage ms-3"><--Back to homepage</a></p>
-    <h1>Recipe</h1>
-        <div id="editForm" style="display:none;">
-            <h2>Edit Recipe</h2>
-            <form id="recipeEditForm">
-                <input type="hidden" id="recipeId" name="recipeId">
-                <label for="recipeName">Name</label>
-                <input type="text" id="recipeName" name="recipeName">
-                <label for="recipeIngredients">Ingredients:</label>
-                <textarea id="recipeIngredients" name="recipeIngredients"></textarea>
-                <label for="recipeSteps">Steps:</label>
-                <textarea id="recipeSteps" name="recipeSteps"></textarea>
-                <button type="submit">Save Changes</button>
-            </form>
+    <h1>Edit Recipe</h1>
+    <form id="recipeEditForm" class="text-center">
+        <div>
+            <label for="recipeImage"></label>
+            <input type="text" id="recipeImage" name="recipeImage">
         </div>
-    <script src="../static/edit_recipes.js"></script>
+        <div>
+            <label for="recipeName">Name</label>
+            <input type="text" id="recipeName" name="recipeName" placeholder="Recipe Name">
+        </div>
+        <div>
+            <label for="recipeIngredients">Ingredients:</label>
+            <textarea id="recipeIngredients" name="recipeIngredients" placeholder="Ingredients"></textarea>
+        </div>
+        <div>
+            <label for="recipeSteps">Steps:</label>
+            <textarea id="recipeSteps" name="recipeSteps" placeholder="Steps"></textarea>
+        </div>
+        <button type="submit" class="saveChange">Save Changes</button>
+    </form>
+    <script src="../static/edit_recipe.js"></script>
 </body>
 </html>
