@@ -39,7 +39,7 @@ function displaySearchResults(searchResults, targetContainer) {
 
             // Add ingredients list
             let ingredientsList = document.createElement('p');
-            ingredientsList.textContent = `Ingredients: ${result.ingredients.join(', ')}`;
+            ingredientsList.innerHTML = `<strong>Ingredients</strong>: ${result.ingredients.join(', ')}`;
 
             // Add steps
             let stepsList = document.createElement('ol');

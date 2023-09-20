@@ -1,6 +1,7 @@
 let recipes;
 
 console.log("Javascript file loaded.")
+
 // Function to display all saved recipes
 function displayAllRecipes() {
     console.log("Displaying all recipes for All Recipes page");
@@ -88,5 +89,4 @@ function deleteRecipe(recipeID) {
 }
 
 displayAllRecipes()
-
 
